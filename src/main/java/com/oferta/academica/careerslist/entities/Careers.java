@@ -1,5 +1,6 @@
 package com.oferta.academica.careerslist.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,15 +8,18 @@ import javax.persistence.Id;
 
 @Entity
 public class Careers {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cod_careers;
-	
-	private String objetivo, modalidad, campo_ocupacional, requisitos, malla_curricular;
-	
+
+	private String objetivo, campo_ocupacional, requisitos, malla_curricular;
+
+	@Column(length = 50)
+	private String modalidad;
+
 	public Careers() {
-		
+
 	}
 
 	public Careers(int cod_careers, String objetivo, String modalidad, String campo_ocupacional, String requisitos,
@@ -75,6 +79,6 @@ public class Careers {
 
 	public void setMalla_curricular(String malla_curricular) {
 		this.malla_curricular = malla_curricular;
-	}	
+	}
 
 }
