@@ -18,13 +18,15 @@ public class Careers {
 		
 	}
 
-	public Careers(int cod_careers, String objetivo, String modalidad, String campo, malla curricular) {
+	public Careers(int cod_careers, String objetivo, String modalidad, String campo_ocupacional, String requisitos,
+			String malla_curricular) {
 		super();
 		this.cod_careers = cod_careers;
 		this.objetivo = objetivo;
 		this.modalidad = modalidad;
-		this.campo_ocupacional = campo;
-		this.malla_curricular = curricular;
+		this.campo_ocupacional = campo_ocupacional;
+		this.requisitos = requisitos;
+		this.malla_curricular = malla_curricular;
 	}
 
 	public int getCod_careers() {
@@ -73,6 +75,6 @@ public class Careers {
 
 	public void setMalla_curricular(String malla_curricular) {
 		this.malla_curricular = malla_curricular;
-	}
+	}	
 
 }
