@@ -48,9 +48,5 @@ public class Level {
 	public void setCod_postgrado(int cod_postgrado) {
 		this.cod_postgrado = cod_postgrado;
 	}
-
-	
-	
-
 	
 }
