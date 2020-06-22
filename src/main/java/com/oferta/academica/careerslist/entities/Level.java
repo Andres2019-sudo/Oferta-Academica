@@ -12,17 +12,16 @@ public class Level {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cod_level;
 
-	private int cod_pregrado, cod_postgrado;
+	private String name;
 	
 	public Level() {
 		
 	}
 
-	public Level(int cod_level, int cod_pregrado, int cod_postgrado) {
+	public Level(int cod_level, String name) {
 		super();
 		this.cod_level = cod_level;
-		this.cod_pregrado = cod_pregrado;
-		this.cod_postgrado = cod_postgrado;
+		this.name = name;
 	}
 
 	public int getCod_level() {
@@ -33,20 +32,12 @@ public class Level {
 		this.cod_level = cod_level;
 	}
 
-	public int getCod_pregrado() {
-		return cod_pregrado;
+	public String getName() {
+		return name;
 	}
 
-	public void setCod_pregrado(int cod_pregrado) {
-		this.cod_pregrado = cod_pregrado;
-	}
-
-	public int getCod_postgrado() {
-		return cod_postgrado;
-	}
-
-	public void setCod_postgrado(int cod_postgrado) {
-		this.cod_postgrado = cod_postgrado;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
