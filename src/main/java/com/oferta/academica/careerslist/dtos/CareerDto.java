@@ -1,34 +1,17 @@
-package com.oferta.academica.careerslist.entities;
+package com.oferta.academica.careerslist.dtos;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.oferta.academica.careerslist.entities.Career;
 
-@Entity
-public class Careers {
+public class CareerDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cod_careers;
 
-	private String objetivo, campo_ocupacional, requisitos, malla_curricular;
+	private String objetivo, campo_ocupacional, requisitos, malla_curricular, modalidad;
+	
+	private LevelDto level;
 
-	@Column(length = 50)
-	private String modalidad;
-
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Level level;
-
-	public Careers() {
-	}
-
-	public Careers(int cod_careers, String objetivo, String campo_ocupacional, String requisitos,
-			String malla_curricular, String modalidad, Level level) {
+	public CareerDto(int cod_careers, String objetivo, String campo_ocupacional, String requisitos,
+			String malla_curricular, String modalidad, LevelDto level) {
 		super();
 		this.cod_careers = cod_careers;
 		this.objetivo = objetivo;
@@ -37,6 +20,16 @@ public class Careers {
 		this.malla_curricular = malla_curricular;
 		this.modalidad = modalidad;
 		this.level = level;
+	}
+	
+	public CareerDto(Career career) {
+		this.cod_careers= career.getCod_careers();
+		this.objetivo= career.getObjetivo();
+		this.campo_ocupacional= career.getCampo_ocupacional();
+		this.requisitos= career.getRequisitos();
+		this.malla_curricular= career.getMalla_curricular();
+		this.modalidad= career.getModalidad();
+		this.level= new LevelDto (career.getLevel());
 	}
 
 	public int getCod_careers() {
@@ -87,12 +80,12 @@ public class Careers {
 		this.modalidad = modalidad;
 	}
 
-	public Level getLevel() {
+	public LevelDto getLevel() {
 		return level;
 	}
 
-	public void setLevel(Level level) {
+	public void setLevel(LevelDto level) {
 		this.level = level;
 	}
-
+		
 }

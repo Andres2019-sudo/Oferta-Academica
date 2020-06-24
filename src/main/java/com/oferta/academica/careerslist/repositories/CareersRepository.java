@@ -2,8 +2,8 @@ package com.oferta.academica.careerslist.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.oferta.academica.careerslist.entities.Careers;
+import com.oferta.academica.careerslist.entities.Career;
 
-public interface CareersRepository extends JpaRepository<Careers, Integer>{
+public interface CareersRepository extends JpaRepository<Career, Integer>{
 
 }
