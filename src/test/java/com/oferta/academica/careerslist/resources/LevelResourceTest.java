@@ -30,6 +30,25 @@ public class LevelResourceTest {
 	@Test
 	public void createLevelTest() {
 		restService.restBuilder().path(LevelResource.LEVEL).body(levelDto).post().build();
-		}	
+	}	
 	
+	@Test
+	public void readAllLevelsTest() {
+		String json = restService.restBuilder(new RestBuilder<String>()).clazz(String.class).path(LevelResource.LEVEL).get().build();
+		System.out.println("---"+json);
+	}
+	
+	@Test
+	public void readLevelByIdTest() {
+		String json = restService.restBuilder(new RestBuilder<String>()).clazz(String.class).path(LevelResource.LEVEL)
+				.path(LevelResource.ID).expand(1).get().build();
+		System.out.println("---"+json);
+	}
+	
+	@Test
+	public void editLevelTest() {
+		this.levelDto.setName("Pregrado");			
+		restService.restBuilder().path(LevelResource.LEVEL)
+		.path(LevelResource.ID).expand(1).body(levelDto).put().build();
+	}
 }
