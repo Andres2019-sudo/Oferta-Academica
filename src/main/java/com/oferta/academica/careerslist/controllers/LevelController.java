@@ -11,11 +11,17 @@ import com.oferta.academica.careerslist.dtos.LevelDto;
 import com.oferta.academica.careerslist.entities.Level;
 import com.oferta.academica.careerslist.repositories.LevelRepository;
 
+
 @Controller
 public class LevelController {
 
 	@Autowired
 	private LevelRepository levelRepository;
+	
+	public Optional<Level> getLevelById(int id) {
+		Optional<Level> levelOptional = this.levelRepository.findById(id);
+		return levelOptional;
+	}
 	
 	public void createLevel(LevelDto levelDto) {
 		Level level= new Level(levelDto.getCod_level(),levelDto.getName());
@@ -33,7 +39,7 @@ public class LevelController {
 	}
 	
 	public Optional<LevelDto> findLevelById (int id){
-		Optional<Level>levelOptional = this.levelRepository.findById(id);
+		Optional<Level>levelOptional = this.getLevelById(id);
 		if(levelOptional.isPresent ()) {
 			return Optional.of(new LevelDto(levelOptional.get()));
 		}else {
@@ -42,8 +48,9 @@ public class LevelController {
 	}
 	
 	public boolean editLevel(int id, LevelDto levelDto) {
-		Optional<Level> levOptional = this.levelRepository.findById(id);
-		if (!levOptional.isPresent()) return false;
+		Optional<Level> levOptional = this.getLevelById(id);
+		if (!levOptional.isPresent()) 
+			return false;
 		Level level= levOptional.get();
 		level.setName(levelDto.getName());
 		this.levelRepository.save(level);

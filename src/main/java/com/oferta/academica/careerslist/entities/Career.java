@@ -16,7 +16,7 @@ public class Career {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cod_careers;
 
-	private String objetivo, campo_ocupacional, requisitos, malla_curricular;
+	private String nombre,objetivo, campo_ocupacional, requisitos, malla_curricular;
 
 	@Column(length = 50)
 	private String modalidad;
@@ -27,10 +27,11 @@ public class Career {
 	public Career() {
 	}
 
-	public Career(int cod_careers, String objetivo, String campo_ocupacional, String requisitos,
+	public Career(int cod_careers, String nombre, String objetivo, String campo_ocupacional, String requisitos,
 			String malla_curricular, String modalidad, Level level) {
 		super();
 		this.cod_careers = cod_careers;
+		this.nombre = nombre;
 		this.objetivo = objetivo;
 		this.campo_ocupacional = campo_ocupacional;
 		this.requisitos = requisitos;
@@ -45,6 +46,14 @@ public class Career {
 
 	public void setCod_careers(int cod_careers) {
 		this.cod_careers = cod_careers;
+	}
+	
+	public String  getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getObjetivo() {

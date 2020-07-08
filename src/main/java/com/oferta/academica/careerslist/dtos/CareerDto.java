@@ -6,14 +6,15 @@ public class CareerDto {
 
 	private int cod_careers;
 
-	private String objetivo, campo_ocupacional, requisitos, malla_curricular, modalidad;
+	private String nombre,objetivo, campo_ocupacional, requisitos, malla_curricular, modalidad;
 	
 	private LevelDto level;
 
-	public CareerDto(int cod_careers, String objetivo, String campo_ocupacional, String requisitos,
+	public CareerDto(int cod_careers, String nombre, String objetivo, String campo_ocupacional, String requisitos,
 			String malla_curricular, String modalidad, LevelDto level) {
 		super();
 		this.cod_careers = cod_careers;
+		this.nombre = nombre;
 		this.objetivo = objetivo;
 		this.campo_ocupacional = campo_ocupacional;
 		this.requisitos = requisitos;
@@ -24,6 +25,7 @@ public class CareerDto {
 	
 	public CareerDto(Career career) {
 		this.cod_careers= career.getCod_careers();
+		this.nombre = career.getNombre();
 		this.objetivo= career.getObjetivo();
 		this.campo_ocupacional= career.getCampo_ocupacional();
 		this.requisitos= career.getRequisitos();
@@ -38,6 +40,14 @@ public class CareerDto {
 
 	public void setCod_careers(int cod_careers) {
 		this.cod_careers = cod_careers;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getObjetivo() {
