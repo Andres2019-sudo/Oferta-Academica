@@ -29,8 +29,8 @@ public class CareerResourceTest {
 	@Before
 	public void Before() {
 		this.levelDto = new LevelDto(1, "Pregrado");
-		this.careerDto = new CareerDto(5, "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS", "Formar profesionales con competencias emprendedoras y gerenciales para tomar decisiones, gestionar el cambio e implementar estrategias.", 
-				"Directores de empresas de abastecimiento, distribución y afines Gerentes de comercios al por mayor y al por menor","Aprobación del curso de nivelación o propedéutico.", "malla_curricular", "Presencial y semipresencial", this.levelDto);
+		this.careerDto = new CareerDto(12, "LICENCIATURA EN TURISMO", "Formar profesionales con valores éticos y humanistas, capaces de diseñar, planificar y gestionar empresas.", 
+				"Guianza de Turismo.","Aprobación del curso de nivelación o propedéutico.", "malla_curricular", "Presencial", this.levelDto);
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class CareerResourceTest {
 	@Test
 	public void readAllCareersTest() {
 		String json = restService.restBuilder(new RestBuilder<String>()).clazz(String.class)
-				.path(CareerResource.CAREER).path(CareerResource.ID).expand(7).get().build();
+				.path(CareerResource.CAREER).path(CareerResource.ID).expand(10).get().build();
 		
 		System.out.println("-->"+ json);
 	}
@@ -49,22 +49,22 @@ public class CareerResourceTest {
 	@Test
 	public void readCareerByIdTest() {
 		String json = restService.restBuilder(new RestBuilder<String>()).clazz(String.class)
-				.path(CareerResource.CAREER).path(CareerResource.ID).expand(7).get().build();
+				.path(CareerResource.CAREER).path(CareerResource.ID).expand(10).get().build();
 		
 		System.out.println("-->"+ json);
 	}
 	
 	@Test
 	public void editCareerTest() {
-		this.careerDto.setNombre("LICENCIATURA EN ENFERMERÍA");
-		this.careerDto.setObjetivo("Formar un profesional de altos valores éticos y sólida formación teórica y práctica, capaz de intervenir en procesos dirigidos al cuidado médico asistencial.");
-		this.careerDto.setCampo_ocupacional("Sector Salud, Sector Educación, Sector Justicia y Derechos Penales");
+		this.careerDto.setNombre("LICENCIATURA EN GASTRONOMÍA");
+		this.careerDto.setObjetivo("Formar profesionales con valores éticos y humanistas, capaces de diseñar, planificar y gestionar empresas gastronómicas.");
+		this.careerDto.setCampo_ocupacional("Planificación, implementación y ejecución de proyectos Gastronómicos");
 		this.careerDto.setRequisitos("Aprobación del curso de nivelación o propedéutico.");
 		this.careerDto.setMalla_curricular("malla_curricular");
 		this.careerDto.setModalidad("Presencial");
 		this.levelDto.setCod_level(1);
 		restService.restBuilder().path(CareerResource.CAREER).path(CareerResource.ID)
-		.expand(11).body(careerDto).put().build();
+		.expand(9).body(careerDto).put().build();
 	}	
 	
 }
