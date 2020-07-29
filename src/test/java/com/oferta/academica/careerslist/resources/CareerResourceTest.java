@@ -29,8 +29,8 @@ public class CareerResourceTest {
 	@Before
 	public void Before() {
 		this.levelDto = new LevelDto(1, "Pregrado");
-		this.careerDto = new CareerDto(12, "LICENCIATURA EN TURISMO", "Formar profesionales con valores éticos y humanistas, capaces de diseñar, planificar y gestionar empresas.", 
-				"Guianza de Turismo.","Aprobación del curso de nivelación o propedéutico.", "malla_curricular", "Presencial", this.levelDto);
+		this.careerDto = new CareerDto(10, "LICENCIATURA EN TURISMO","OBJETIVO","CAMPO OCUPACIONAL","REQUISITOS","MALLA CURRICULAR",
+				"MODALIDAD","PERFIL EGRESO","TITULO","IMAGEN",this.levelDto);
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class CareerResourceTest {
 	@Test
 	public void readAllCareersTest() {
 		String json = restService.restBuilder(new RestBuilder<String>()).clazz(String.class)
-				.path(CareerResource.CAREER).path(CareerResource.ID).expand(10).get().build();
+				.path(CareerResource.CAREER).path(CareerResource.ID).expand(1).get().build();
 		
 		System.out.println("-->"+ json);
 	}
@@ -49,22 +49,24 @@ public class CareerResourceTest {
 	@Test
 	public void readCareerByIdTest() {
 		String json = restService.restBuilder(new RestBuilder<String>()).clazz(String.class)
-				.path(CareerResource.CAREER).path(CareerResource.ID).expand(10).get().build();
+				.path(CareerResource.CAREER).path(CareerResource.ID).expand(1).get().build();
 		
 		System.out.println("-->"+ json);
 	}
 	
 	@Test
 	public void editCareerTest() {
-		this.careerDto.setNombre("LICENCIATURA EN GASTRONOMÍA");
-		this.careerDto.setObjetivo("Formar profesionales con valores éticos y humanistas, capaces de diseñar, planificar y gestionar empresas gastronómicas.");
-		this.careerDto.setCampo_ocupacional("Planificación, implementación y ejecución de proyectos Gastronómicos");
+		this.careerDto.setNombre("Contabilidad y Auditoria");
+		this.careerDto.setObjetivo("Formar profesionales en contabilidad y auditoría, con ética profesional y con amplios conocimientos técnicos, científicos y tecnológicos, en las áreas contable, financiera, tributaria, ambiental y de control; para resolver y proponer soluciones a los problemas de las entidades, organismos y empresas, contribuyendo al desarrollo de la provincia y del país.");
+		this.careerDto.setCampo_ocupacional("Contador General, Administrador financiero, Contador de Gestión empresarial, Auditor Externo, Auditor Financiero, Auditor de Sistemas,Auditor Tributario, Controlador y Contador gubernamental, Emprendedor");
 		this.careerDto.setRequisitos("Aprobación del curso de nivelación o propedéutico.");
-		this.careerDto.setMalla_curricular("malla_curricular");
-		this.careerDto.setModalidad("Presencial");
+		this.careerDto.setMalla_curricular("Contabilidad y Auditoria");
+		this.careerDto.setModalidad("Semipresencial");
+		this.careerDto.setPerfil_egreso("El egresado de la Carrera de Contabilidad y Auditoría tendrá sólidos conocimientos en contabilidad, auditoría, tributación, costos, gestión financiera, económica y laboral, fortalezas en el uso de utilitarios y software contables, destrezas en el manejo de cifras, así como reportes tanto contables como financieros, capacidad para desenvolverse en ambientes automatizados y congestionados, fluidez de operaciones, optimización de recursos, proactivo con lógica de prioridades, pensamiento crítico, toma de decisiones y resolución de conflictos en su ámbito profesional.");
+		this.careerDto.setTitulo("Licenciado en Contabilidad y Auditoría");
 		this.levelDto.setCod_level(1);
 		restService.restBuilder().path(CareerResource.CAREER).path(CareerResource.ID)
-		.expand(9).body(careerDto).put().build();
+		.expand(1).body(careerDto).put().build();
 	}	
 	
 }

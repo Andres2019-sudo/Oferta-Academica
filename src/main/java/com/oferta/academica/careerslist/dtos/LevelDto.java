@@ -7,6 +7,10 @@ public class LevelDto {
 	private int cod_level;
 
 	private String name;
+	
+	public LevelDto() {
+		
+	}
 
 	public LevelDto(int cod_level, String name) {
 		super();

@@ -32,9 +32,9 @@ public class CareerController {
 		if (!levelOptional.isPresent())
 			return "level";
 		Level level = levelOptional.get();
-		Career career = new Career(careerDto.getCod_careers(), careerDto.getNombre(),careerDto.getObjetivo(),
+		Career career = new Career(careerDto.getCod_careers(), careerDto.getNombre(),careerDto.getObjetivo(), careerDto.getPerfil_egreso(), careerDto.getTitulo(),
 				careerDto.getCampo_ocupacional(),careerDto.getRequisitos(),careerDto.getMalla_curricular(),
-				careerDto.getModalidad(),level);
+				careerDto.getModalidad(), careerDto.getImagen(),level);
 		this.careersRepository.save(career);
 		return "created";
 	}
@@ -72,6 +72,9 @@ public class CareerController {
 		career.setRequisitos(careerDto.getRequisitos());
 		career.setMalla_curricular(careerDto.getMalla_curricular());
 		career.setModalidad(careerDto.getModalidad());
+		career.setPerfil_egreso(careerDto.getPerfil_egreso());
+		career.setTitulo(careerDto.getTitulo());
+		career.setImagen(careerDto.getImagen());
 		career.setLevel(levOptional.get());
 		this.careersRepository.save(career);
 		return true;

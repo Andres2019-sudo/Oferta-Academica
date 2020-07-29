@@ -6,12 +6,16 @@ public class CareerDto {
 
 	private int cod_careers;
 
-	private String nombre,objetivo, campo_ocupacional, requisitos, malla_curricular, modalidad;
+	private String nombre,objetivo, campo_ocupacional, requisitos, malla_curricular, modalidad, perfil_egreso, titulo, imagen;
 	
 	private LevelDto level;
+	
+	public CareerDto () {
+		
+	}
 
 	public CareerDto(int cod_careers, String nombre, String objetivo, String campo_ocupacional, String requisitos,
-			String malla_curricular, String modalidad, LevelDto level) {
+			String malla_curricular, String modalidad, String perfil_egreso, String titulo, String imagen, LevelDto level) {
 		super();
 		this.cod_careers = cod_careers;
 		this.nombre = nombre;
@@ -20,6 +24,9 @@ public class CareerDto {
 		this.requisitos = requisitos;
 		this.malla_curricular = malla_curricular;
 		this.modalidad = modalidad;
+		this.perfil_egreso = perfil_egreso;
+		this.titulo = titulo;
+		this.imagen = imagen;
 		this.level = level;
 	}
 	
@@ -31,6 +38,9 @@ public class CareerDto {
 		this.requisitos= career.getRequisitos();
 		this.malla_curricular= career.getMalla_curricular();
 		this.modalidad= career.getModalidad();
+		this.perfil_egreso = career.getPerfil_egreso();
+		this.titulo = career.getTitulo();
+		this.imagen = career.getImagen();
 		this.level= new LevelDto (career.getLevel());
 	}
 
@@ -88,6 +98,29 @@ public class CareerDto {
 
 	public void setModalidad(String modalidad) {
 		this.modalidad = modalidad;
+	}
+	
+	public String getPerfil_egreso () {
+		return perfil_egreso;
+	}
+	
+	public void setPerfil_egreso (String perfil_egreso) {
+		this.perfil_egreso = perfil_egreso;
+	}
+	
+	public String getTitulo () {
+		return titulo;
+	}
+	
+	public void setTitulo (String titulo) {
+		this.titulo = titulo;
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	
+	public void setImagen (String imagen) {
+		this.imagen = imagen;
 	}
 
 	public LevelDto getLevel() {
